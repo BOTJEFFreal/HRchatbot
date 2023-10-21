@@ -5,7 +5,7 @@ import joblib
 def get_Sentiment(n1,n2,n3,n4,n5):
 
     # trained model being loaded
-    regressor = joblib.load('Backend/chatApp/ML_model/regressor_model.pkl')
+    regressor = joblib.load('./ML_model/regressor_model.pkl')
 
     # Features for prediction
     new_data = [[1, 1, 1, 1, 1]]
