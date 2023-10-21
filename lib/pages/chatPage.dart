@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,28 +28,30 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView(
-                    children: [
-                      for (var message in messages) SentMessage(message: message),
-                      ReceivedMessage(message: "Hi this is awesome chat bubble"),
-                      // ... (other messages)
-                    ],
+    return MaterialApp(
+      home: Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        for (var message in messages) SentMessage(message: message),
+                        ReceivedMessage(message: "Hi this is awesome chat bubble"),
+                        // ... (other messages)
+                      ],
+                    ),
                   ),
-                ),
-                ChatTextField(
-                  textEditingController: _textEditingController,
-                  onSendMessage: _onSendMessage,
-                ),
-              ],
+                  ChatTextField(
+                    textEditingController: _textEditingController,
+                    onSendMessage: _onSendMessage,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }
