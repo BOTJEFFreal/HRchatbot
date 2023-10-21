@@ -1,11 +1,9 @@
 import { useState } from "react";
 import React from "react";
 import "./InvociePage.css"
-// import InvoiceGrid from "../../components/InvoiceGrid/InvoiceGrid";
-// import AdvanceInvoiceGrid from "../../components/AdvancedGrid/AdvanceGrid";
+import TextTab from "../../components/TextTab/TextTab";
 
 function InvoicePage() {
-  const [billNumber, setBillNumber] = useState(0);
   return (
     <div className="invoice-page">
       <div className="invoice-page-left">
@@ -18,6 +16,12 @@ function InvoicePage() {
       </div>
       <div className="invoice-page-right">
         <div className="my-bills">All Employees</div>
+        <TextTab/>
+        <TextTab/>
+        <TextTab/>
+        <TextTab/>
+        <TextTab/>
+        <TextTab/>
        
 
 

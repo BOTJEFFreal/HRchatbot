@@ -1,0 +1,76 @@
+.outer-border{
+    margin-top: 6%;
+    padding-bottom: 2%;
+    border-bottom: #C0C3C8 2px solid;
+}
+.text-tab {
+  
+  display: flex;
+}
+.sno {
+  flex: 1;
+  text-align: center;
+  color: #4b436c;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.content {
+  display: flex;  
+  justify-content: space-between;
+  flex: 9;
+
+  border-radius: 18px;
+  background: #fafafa;
+  padding: 20px;
+}
+
+.information{
+    width: 30%;
+
+}
+
+.name{
+    color: #4B436C;
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.percentage-tab{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 2%;
+    margin: 10px 0px;
+}
+.motivation{
+    color: #928A9F;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.value{
+    color: #928A9F;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.state{
+    margin-right: 1%;
+    color: #4B436C;
+
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
