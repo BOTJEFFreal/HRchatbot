@@ -1,4 +1,4 @@
-from .sentiment_model import get_Sentiment
+from .sentiment_model import generate_random_sentiment, get_Sentiment
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -80,9 +80,9 @@ class NumberOutputView(APIView):
 
         if all(answers) and len(answers) == 5:
             total = sum(map(int, answers))
-            sentiment_output=get_Sentiment(answers[0],answers[1],answers[2],answers[3],answers[4])
+            sentiment_output = generate_random_sentiment(answers[0], answers[1], answers[2], answers[3], answers[4])
 
-            output = NumberOutput.objects.create(
+            output = NumberOutput(
                 user_id=sender_id,
                 answer1=answers[0],
                 answer2=answers[1],
@@ -93,7 +93,16 @@ class NumberOutputView(APIView):
                 sentiment_output=sentiment_output
             )
 
+            output.save()  # Save the instance to the database
+
             serializer = NumberOutputSerializer(output)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response({'error': 'Invalid input. Please provide 5 answers.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class NumberOutputListView(APIView):
+    def get(self, request, format=None):
+        outputs = NumberOutput.objects.all()
+        serializer = NumberOutputSerializer(outputs, many=True)
+        return Response(serializer.data)

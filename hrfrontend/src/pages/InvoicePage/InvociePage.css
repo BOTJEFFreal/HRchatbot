@@ -55,6 +55,7 @@
 }
 .invoice-page-right {
   flex: 5;
+  height: 100%;
   background: #f0f0f0;
   padding: 6% 4.5%;
   text-align: start;

@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import joblib
+import random
+
 
 def get_Sentiment(n1,n2,n3,n4,n5):
 
@@ -34,3 +36,13 @@ def get_Sentiment(n1,n2,n3,n4,n5):
     predicted_sentiment = sentiment_categories[predicted_sentiment_index]
     # print("Predicted Sentiment:", predicted_sentiment)
     return predicted_sentiment
+
+def generate_random_sentiment(n1,n2,n3,n4,n5):
+    sentiment_categories = [
+        'Engaged', 'Exhausted', 'Focused',
+        'Frustrated', 'Inspired', 'Neutral',
+        'Overwhelmed', 'Resentful', 'Stressed',
+        'Unhappy'
+    ]
+
+    return random.choice(sentiment_categories)
