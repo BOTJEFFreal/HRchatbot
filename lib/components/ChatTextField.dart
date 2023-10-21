@@ -24,28 +24,17 @@ class _ChatTextFieldState extends State<ChatTextField> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
 
-    void _onSendMessage(String message) async {
-      try {
-        var response = await http.post(Uri.parse('http://127.0.0.1:8000/chatapp/reply/'), body: {
-          'sender_id': '2',
-          'content': 'Hi how are you new message',
+    void _onPressed() async {
+      if (widget.textEditingController.text.isNotEmpty) {
+        String sentMessage = widget.textEditingController.text;
+
+        widget.onSendMessage(sentMessage);
+
+        String replyMessage = await sendPostRequest(sentMessage);
+
+        setState(() {
+          widget.onSendMessage(replyMessage);
         });
-        if (response.statusCode == 200) {
-          print('Request successful');
-        } else {
-          print('Request failed with status: ${response.statusCode}');
-        }
-      } catch (error) {
-        print('Error: $error');
-      }
-
-    }
-
-    void _onPressed() {
-      if (widget.textEditingController.text != "") {
-        // _onSendMessage(widget.textEditingController.text);
-        sendPostRequest(widget.textEditingController.text);
-        widget.onSendMessage(widget.textEditingController.text);
       }
     }
 

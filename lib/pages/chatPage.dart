@@ -26,7 +26,6 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
 
     return MaterialApp(
       home: Scaffold(
@@ -40,7 +39,6 @@ class _ChatPageState extends State<ChatPage> {
                       children: [
                         for (var message in messages) SentMessage(message: message),
                         ReceivedMessage(message: "Hi this is awesome chat bubble"),
-                        // ... (other messages)
                       ],
                     ),
                   ),
