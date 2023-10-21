@@ -1,54 +1,31 @@
 # pip install openai
 # create key.txt and paste your secret api key in it
 import openai
-OPENAI ='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'
-def getReply(promptText):
-    openai.api_key = OPENAI 
-    completion =openai.ChatCompletion.create(
-        model ="gpt-3.5-turbo-16k",
-        messages = [{"role":"user","content":promptText}]
+OPENAI=''
+# to generate an answer to a prompt from chatGPT
+def get_completion(prompt, model="gpt-3.5-turbo-16k"):
+    messages = [{"role": "user", "content": prompt}]
+    response = openai.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        temperature=0, # this is the degree of randomness of the model's output
     )
-    reply_content = completion.choices[0].message.content
-    return reply_content
+    return response.choices[0].message["content"]
 
-def getReplies(message_list):
-    openai.api_key = OPENAI 
-    message_history=[]
-    reply_content = []
-    for message in message_list:
-        message_history.append({"role":"user","content":message})
-        completion =openai.ChatCompletion.create(
-            model ="gpt-3.5-turbo-16k",
-            messages = message_history
-        )
-        temp = completion.choices[-1].message.content
-        message_history.append({"role":"assistant","content":temp})
-        reply_content.append(temp)
-    return reply_content
+# to store previous messages in chat and generate answer to prompts on the basis of history of conversation
+def get_completion_from_messages(messages, model="gpt-3.5-turbo-16k", temperature=0):
+     response = openai.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        temperature=temperature, # this is the degree of randomness of the model's output
+    )
+     return response.choices[0].message["content"]
 
-def getChatHistory(message_list,message_history):
-    openai.api_key = open("key.txt","r").read().strip("\n")
-    for message in message_list:
-        message_history.append({"role":"user","content":message})
-        completion =openai.ChatCompletion.create(
-            model ="gpt-3.5-turbo-16k",
-            messages = message_history
-        )
-        temp = completion.choices[-1].message.content
-        message_history.append({"role":"assistant","content":temp})
-    return message_history
-
-def extractReplies(message_history):
-    reply_content=[]
-    for message in message_history:
-        if message["role"] == "assistant":
-            reply_content.append(message["content"])
-    return reply_content
-
-def extractPrompts(message_history):
-    reply_content=[]
-    for message in message_history:
-        if message["role"] == "user":
-            reply_content.append(message["content"])
-    return reply_content
+# to collect all the messages together and generate an array for conversations
+def collect_messages(text,context):
+    prompt = text
+    context.append({'role':'user', 'content':f"{prompt}"})
+    response = get_completion_from_messages(context)
+    context.append({'role':'assistant', 'content':f"{response}"})
+    return response
 
