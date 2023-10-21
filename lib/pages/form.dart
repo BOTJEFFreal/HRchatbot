@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../components/my_button.dart';
 import '../functions/server.dart';
+import 'chatPage.dart';
 
 class RatingForm extends StatefulWidget {
   @override
@@ -120,6 +121,8 @@ class _RatingFormState extends State<RatingForm> {
                       // All questions are answered, proceed with submission
                       print('Selected Ratings: $selectedRatings');
                       sendPostForm(selectedRatings);
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => ChatPage()));
                     } else {
                       // Show toast
                       Fluttertoast.showToast(

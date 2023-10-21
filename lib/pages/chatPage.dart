@@ -5,15 +5,15 @@ import '../components/ChatTextField.dart';
 import '../functions/ReceivedMessage.dart';
 import '../functions/SentMessage.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+class ChatPage extends StatefulWidget {
+  ChatPage({Key? key}) : super(key: key);
 
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _ChatPageState createState() => _ChatPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ChatPageState extends State<ChatPage> {
   TextEditingController _textEditingController = TextEditingController();
   List<String> messages = [];
 
