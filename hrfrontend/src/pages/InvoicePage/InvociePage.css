@@ -1,0 +1,82 @@
+.invoice-page {
+  display: flex;
+  height: 100vh;
+}
+
+.invoice-page-left {
+  padding: 2.5% 0px;
+  flex: 1;
+}
+.company-name {
+  color: #6e59a4;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 38.245px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.client-name {
+  color: #140d44;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  margin: 0px;
+  padding: 0px;
+  margin-top: 15%;
+}
+.client-location {
+  color: #4b436c;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+}
+.status {
+  color: #4b436c;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+}
+.invoice-page-right {
+  flex: 5;
+  background: #f0f0f0;
+  padding: 6% 4.5%;
+  text-align: start;
+}
+.my-bills {
+  display: block;
+  color: #4b436c;
+  font-family: Roboto;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #000;
+}
+.number-of-bills {
+  color: #8e8e8e;
+  font-family: Roboto;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 10px 0px;
+}
+
