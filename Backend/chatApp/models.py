@@ -14,6 +14,7 @@ class NumberOutput(models.Model):
     answer4 = models.TextField()
     answer5 = models.TextField()
     total = models.IntegerField()
+    sentiment_output=models.TextField(default="Neutral")
 
     def __str__(self):
         return f'Total: {self.total}'

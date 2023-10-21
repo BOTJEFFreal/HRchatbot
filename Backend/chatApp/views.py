@@ -1,3 +1,4 @@
+from Backend.chatApp.sentiment_model import get_Sentiment
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -38,6 +39,7 @@ class NumberOutputView(APIView):
 
         if all(answers) and len(answers) == 5:
             total = sum(map(int, answers))
+            sentiment_output=get_Sentiment(answers[0],answers[1],answers[2],answers[3],answers[4])
 
             output = NumberOutput.objects.create(
                 user_id=sender_id,
@@ -46,7 +48,8 @@ class NumberOutputView(APIView):
                 answer3=answers[2],
                 answer4=answers[3],
                 answer5=answers[4],
-                total=total
+                total=total,
+                sentiment_output=sentiment_output
             )
 
             serializer = NumberOutputSerializer(output)
