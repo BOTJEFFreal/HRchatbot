@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ChatTextField extends StatelessWidget {
+import '../functions/server.dart';
+
+class ChatTextField extends StatefulWidget {
   final TextEditingController textEditingController;
   final Function(String) onSendMessage;
 
@@ -11,14 +13,20 @@ class ChatTextField extends StatelessWidget {
   });
 
   @override
+  State<ChatTextField> createState() => _ChatTextFieldState();
+}
+
+class _ChatTextFieldState extends State<ChatTextField> {
+  @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
 
     void _onPressed() {
-      if(textEditingController.text!=""){
-        onSendMessage(textEditingController.text);
+      if(widget.textEditingController.text!=""){
+        widget.onSendMessage(widget.textEditingController.text);
       }
     }
+
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -29,7 +37,7 @@ class ChatTextField extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(top: 16, right: 2, bottom: 16, left: 8),
             child: TextField(
-              controller: textEditingController,
+              controller: widget.textEditingController,
               decoration: InputDecoration(
                 labelText: 'Enter your text',
                 border: OutlineInputBorder(
