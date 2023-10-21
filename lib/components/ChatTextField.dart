@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../functions/server.dart';
+
 class ChatTextField extends StatefulWidget {
   final TextEditingController textEditingController;
   final Function(String) onSendMessage;
@@ -26,7 +28,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
       try {
         var response = await http.post(Uri.parse('http://127.0.0.1:8000/chatapp/reply/'), body: {
           'sender_id': '2',
-          'content': 'Hi how are you',
+          'content': 'Hi how are you new message',
         });
         if (response.statusCode == 200) {
           print('Request successful');
@@ -41,7 +43,8 @@ class _ChatTextFieldState extends State<ChatTextField> {
 
     void _onPressed() {
       if (widget.textEditingController.text != "") {
-        _onSendMessage(widget.textEditingController.text);
+        // _onSendMessage(widget.textEditingController.text);
+        sendPostRequest(widget.textEditingController.text);
         widget.onSendMessage(widget.textEditingController.text);
       }
     }

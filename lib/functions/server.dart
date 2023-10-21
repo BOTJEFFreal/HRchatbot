@@ -1,29 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-void sendPostRequest() async {
-  final apiUrl = 'http://127.0.0.1:8000/chatapp/reply/';
+void sendPostRequest( String message) async {
+  var request = http.MultipartRequest('POST', Uri.parse('https://hr-chatbot-3sh8.onrender.com/chatapp/reply/'));
+  request.fields.addAll({
+    'sender_id': '2',
+    'content': message
+  });
 
-  // Define the request body
-  var requestBody = {
-    'sender_id': '1', // Replace with the actual sender ID
-    'content': 'Hello, this is a sample message.', // Replace with the actual message content
-  };
 
-  final response = await http.post(
-    Uri.parse(apiUrl),
-    headers: {'Content-Type': 'application/json'},
-    body: jsonEncode(requestBody),
-  );
+  http.StreamedResponse response = await request.send();
 
-  if (response.statusCode == 201) {
-    print('Message sent successfully');
-    print('Response: ${response.body}');
-  } else {
-    print('Error sending message: ${response.statusCode}');
+  if (response.statusCode == 200) {
+    print(await response.stream.bytesToString());
   }
-}
+  else {
+    print(response.reasonPhrase);
+  }
 
-void main() {
-  sendPostRequest();
 }
