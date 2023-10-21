@@ -35,16 +35,23 @@ class _ChatPageState extends State<ChatPage> {
               child: Column(
                 children: [
                   Expanded(
-                    child: ListView(
-                      children: [
-                        for (var message in messages) SentMessage(message: message),
-                        ReceivedMessage(message: "Hi this is awesome chat bubble"),
-                      ],
+                    child: ListView.builder(
+                      itemCount: messages.length,
+                      itemBuilder: (context, index) {
+                        if (index % 2 == 0) {
+                          // Sent message
+                          return SentMessage(message: messages[index]);
+                        } else {
+                          // Received message
+                          return ReceivedMessage(message: messages[index]);
+                        }
+                      },
                     ),
                   ),
                   ChatTextField(
                     textEditingController: _textEditingController,
                     onSendMessage: _onSendMessage,
+                    isSending: false,
                   ),
                 ],
               ),

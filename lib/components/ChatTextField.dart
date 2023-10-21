@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-
 import '../functions/server.dart';
 
 class ChatTextField extends StatefulWidget {
   final TextEditingController textEditingController;
   final Function(String) onSendMessage;
+  final bool isSending;
 
   const ChatTextField({
     Key? key,
     required this.textEditingController,
     required this.onSendMessage,
+    required this.isSending,
   });
 
   @override
@@ -19,24 +19,23 @@ class ChatTextField extends StatefulWidget {
 }
 
 class _ChatTextFieldState extends State<ChatTextField> {
+  void _onPressed() async {
+    if (!widget.isSending && widget.textEditingController.text.isNotEmpty) {
+      String sentMessage = widget.textEditingController.text;
+
+      widget.onSendMessage(sentMessage);
+
+      String replyMessage = await sendPostRequest(sentMessage);
+
+      setState(() {
+        widget.onSendMessage(replyMessage);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
-    void _onPressed() async {
-      if (widget.textEditingController.text.isNotEmpty) {
-        String sentMessage = widget.textEditingController.text;
-
-        widget.onSendMessage(sentMessage);
-
-        String replyMessage = await sendPostRequest(sentMessage);
-
-        setState(() {
-          widget.onSendMessage(replyMessage);
-        });
-      }
-    }
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -48,11 +47,12 @@ class _ChatTextFieldState extends State<ChatTextField> {
             padding: const EdgeInsets.only(top: 16, bottom: 16),
             child: TextField(
               controller: widget.textEditingController,
+              enabled: !widget.isSending, // Disable the input field while sending
               decoration: const InputDecoration(
                 labelText: 'Enter your text',
                 border: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.black), // Set border color here
+                  BorderSide(color: Colors.black), // Set border color here
                 ),
               ),
             ),
@@ -61,7 +61,8 @@ class _ChatTextFieldState extends State<ChatTextField> {
         Container(
           child: IconButton(
             icon: const Icon(Icons.arrow_forward_ios),
-            onPressed: _onPressed,
+            onPressed: widget.isSending ? null : _onPressed,
+            disabledColor: Colors.grey, // Change button color when disabled
           ),
         )
       ],
