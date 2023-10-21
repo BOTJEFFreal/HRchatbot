@@ -15,11 +15,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -49,26 +44,27 @@ class _MyHomePageState extends State<MyHomePage> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Column(
-          children: [
-            Container(
-              height: height * 0.78,
-              child: ListView(
-                children: [
-                  for (var message in messages) SentMessage(message: message),
-                  ReceivedMessage(message: "Hi this is awesome chat bubble"),
-                  // ... (other messages)
-                ],
-              ),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    children: [
+                      for (var message in messages) SentMessage(message: message),
+                      ReceivedMessage(message: "Hi this is awesome chat bubble"),
+                      // ... (other messages)
+                    ],
+                  ),
+                ),
+                ChatTextField(
+                  textEditingController: _textEditingController,
+                  onSendMessage: _onSendMessage,
+                ),
+              ],
             ),
-            ChatTextField(
-              textEditingController: _textEditingController,
-              onSendMessage: _onSendMessage,
-            ),
-          ],
+          ),
         ));
   }
 }

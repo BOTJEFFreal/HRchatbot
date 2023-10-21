@@ -1,26 +1,29 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-Future<void> sendMessageToServer(String message) async {
-  final String apiUrl = 'https://example.com/api'; // Replace with your API URL
+void sendPostRequest() async {
+  final apiUrl = 'http://127.0.0.1:8000/chatapp/reply/';
 
-  final Map<String, String> headers = {
-    'Content-Type': 'application/json',
+  // Define the request body
+  var requestBody = {
+    'sender_id': '1', // Replace with the actual sender ID
+    'content': 'Hello, this is a sample message.', // Replace with the actual message content
   };
 
-  final Map<String, dynamic> data = {
-    'message': message,
-  };
-
-  final http.Response response = await http.post(
-    apiUrl,
-    headers: headers,
-    body: jsonEncode(data),
+  final response = await http.post(
+    Uri.parse(apiUrl),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode(requestBody),
   );
 
-  if (response.statusCode == 200) {
+  if (response.statusCode == 201) {
     print('Message sent successfully');
+    print('Response: ${response.body}');
   } else {
-    throw Exception('Failed to send message to server');
+    print('Error sending message: ${response.statusCode}');
   }
+}
+
+void main() {
+  sendPostRequest();
 }
