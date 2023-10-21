@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../components/my_button.dart';
+import '../functions/server.dart';
 
 class RatingForm extends StatefulWidget {
   @override
@@ -118,6 +119,7 @@ class _RatingFormState extends State<RatingForm> {
                     if (areAllQuestionsAnswered(selectedRatings)) {
                       // All questions are answered, proceed with submission
                       print('Selected Ratings: $selectedRatings');
+                      sendPostForm(selectedRatings);
                     } else {
                       // Show toast
                       Fluttertoast.showToast(
