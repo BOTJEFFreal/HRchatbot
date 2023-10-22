@@ -61,7 +61,11 @@ def reply_to_message(request):
         message = Message.objects.create(sender=sender, content=content)
         question=content
         # getting response from GPT on the basis of previous messages
-        reply_text = collect_messages(question,context)
+        reply_text = '''As an employee of Apple, based on the provided HR documents, your rights include the following:
+
+Freedom of Speech: You are permitted to speak freely about your wages, hours, and working conditions, including information about harassment, discrimination, or any other conduct you have reason to believe is unlawful. Nothing in the Policy or any Apple policy should restrict your right to do so.
+
+'''#collect_messages(question,context)
         return Response({'message_id': message.id, 'reply_text': reply_text}, status=status.HTTP_201_CREATED)
     else:
         return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
