@@ -2,7 +2,7 @@
 
 The project contains two parts: <br />
 (i) HR chatbot: This allows an organisation to upload their company documnents and enable employees to ask basic HR questions to the chatbot itself without wasting much working hours over it. <br />
-(ii) Sentiment Analyser: This allows HRs to monitor the wellbeing of their employees using short one-minute surveys everyday and getting analysis of sentiments based on them. A machine learning algorithm has been trained over a dataaset to identify 9 types of employee sentiments and proper questions have been taken from thi kaggle dataset:[https://www.kaggle.com/datasets/harriken/myhappyforce-survey-employee-stress?select=score Metadata.csv] <br />
+(ii) Sentiment Analyser: This allows HRs to monitor the wellbeing of their employees using short one-minute surveys everyday and getting analysis of sentiments based on them. A machine learning algorithm has been trained over a dataset to identify 9 types of employee sentiments and proper questions have been taken from thi kaggle dataset:[https://www.kaggle.com/datasets/harriken/myhappyforce-survey-employee-stress?select=score Metadata.csv] <br />
 
 ## Modules
 
