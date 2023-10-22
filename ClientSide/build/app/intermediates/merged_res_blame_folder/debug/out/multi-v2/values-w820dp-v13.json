@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hrchatbot.app-mergeDebugResources-21:/values-w820dp-v13/values-w820dp-v13.xml",
+            "outputFile": "com.example.hrchatbot.app-mergeDebugResources-30:/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "D:\\GitHub\\New folder\\hrchatbot\\build\\flutter_barcode_scanner\\intermediates\\packaged_res\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
+                    "source": "D:\\GitHub\\New folder\\hrchatbot\\ClientSide\\build\\flutter_barcode_scanner\\intermediates\\packaged_res\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
