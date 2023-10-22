@@ -1,7 +1,8 @@
 # pip install openai
 # create key.txt and paste your secret api key in it
 import openai
-OPENAI=''
+import os
+OPENAI=os.environ.get('OPENAI')
 # to generate an answer to a prompt from chatGPT
 def get_completion(prompt, model="gpt-3.5-turbo-16k"):
     messages = [{"role": "user", "content": prompt}]
