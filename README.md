@@ -1,4 +1,4 @@
-# hrchatbot
+# HRGenius
 
 The project contains two parts: 
 (i) HR chatbot: This allows an organisation to upload their company documnents and enable employees to ask basic HR questions to the chatbot itself without wasting much working hours over it.
