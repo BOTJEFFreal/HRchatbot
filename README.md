@@ -1,16 +1,23 @@
 # hrchatbot
 
-A new Flutter project.
+The project contains two parts: 
+(i) HR chatbot: This allows an organisation to upload their company documnents and enable employees to ask basic HR questions to the chatbot itself without wasting much working hours over it.
+(ii) Sentiment Analyser: This allows HRs to monitor the wellbeing of their employees using short one-minute surveys everyday and getting analysis of sentiments based on them. A machine learning algorithm has been trained over a dataaset to identify 9 types of employee sentiments and proper questions have been taken from thi kaggle dataset:[https://www.kaggle.com/datasets/harriken/myhappyforce-survey-employee-stress?select=score Metadata.csv]
 
-## Getting Started
+## Modules
 
-This project is a starting point for a Flutter application.
+To run this project:
 
-A few resources to get you started if this is your first Flutter project:
+1. Setting up the virtual env
+    i. MacOS: python3 -m venv venv
+    ii. Activate it: source venv/bin/activate
+2. Install Django
+    i. Install necessary packages: pip install -r requirements.txt
+    ii. Check version: python3 -m django --version
+3. Run the application
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The project has also been hosted on render and can be accessed via these API links:
+(i) HR Chatbot: [https://hr-chatbot-3sh8.onrender.com]
+(ii) Sentiment Analyser: [https://hrfrontend-two.vercel.app/]
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project was created as a part of EightFold AI Hackathon at BITS Pilani, Pilani!
